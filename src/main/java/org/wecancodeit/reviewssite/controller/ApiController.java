@@ -29,36 +29,15 @@ public class ApiController {
 		return tagRepo.findByTagNameIgnoreCase(tagName);
 	}
 	
-	@GetMapping("/api/tags")
-	public Iterable<Tag> getTags() {
-		return tagRepo.findAll();
-	}
-	
 	@GetMapping("/api/doggos/{id}")
 	public Doggo getDoggo(@PathVariable(value = "id") Long id) {
 		return reviewRepo.findById(id).get();
 	}
 	
-//	@PostMapping("/api/doggos/{id}/tags/add")
-//	public String addTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {
-//		JSONObject json = new JSONObject(body);
-//		String newTag = json.getString("tagName");
-//		System.out.println(newTag);
-//		if(tagRepo.findByTagNameIgnoreCase(newTag)!=null) {
-//			//adds doggo to tag
-//			tagRepo.findByTagNameIgnoreCase(newTag).addDoggo(reviewRepo.findById(id).get());
-//			//adds tag to doggo
-//			reviewRepo.findById(id).get().addTag(tagRepo.findByTagNameIgnoreCase(newTag));
-//		} else {
-//			//creates tag
-//			tagRepo.save(new Tag(newTag));
-//			//adds doggo to tag
-//			tagRepo.findByTagNameIgnoreCase(newTag).addDoggo(reviewRepo.findById(id).get());
-//			//adds tag to doggo
-//			reviewRepo.findById(id).get().addTag(tagRepo.findByTagNameIgnoreCase(newTag));
-//		}
-//		return null;
-//	}
+	@GetMapping("/api/doggos")
+	public Iterable<Doggo> getDoggos( Long id) {
+		return reviewRepo.findAll();
+	}
 	
 	@PostMapping("/api/doggos/{id}/tags/add")
 	public Collection<Tag> addTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {

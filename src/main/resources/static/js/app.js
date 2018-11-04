@@ -21,14 +21,12 @@ fetch(`/api/doggos/${window.location.pathname.split('/')[2]}`)
 
 		tags.innerText = 'Tags: '
 		data.tags.forEach(tag => {
-			tags.innerText += tag.tagName + ' ';
+			const link = `
+				<a href="../../tags/${tag.tagName}">${tag.tagName}</a>
+			`
+			//tags.innerText += tag.tagName + ' ';
+			tags.innerHTML += link + ' ';
 		})
 		
 		tagDisplay.appendChild(tags)
-	})
-	
-fetch(`/api/tags/${window.location.pathname.split('/')[2]}`)
-	.then(res => res.json())
-	.then(data => {
-		
 	})
