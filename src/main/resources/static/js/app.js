@@ -26,3 +26,9 @@ fetch(`/api/doggos/${window.location.pathname.split('/')[2]}`)
 		
 		tagDisplay.appendChild(tags)
 	})
+	
+fetch(`/api/tags/${window.location.pathname.split('/')[2]}`)
+	.then(res => res.json())
+	.then(data => {
+		
+	})
